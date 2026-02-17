@@ -5,6 +5,7 @@ import { formatPrice } from "./Constant";
 import { domain } from "../../../security";
 
 const ProductHistoryModal = ({ isOpen, onClose, product }) => {
+  console.log("ako ay burat");
   // --- State ---
   const [historyData, setHistoryData] = useState({
     product: {},
