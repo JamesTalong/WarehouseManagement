@@ -27,7 +27,7 @@ const ProductHistoryModal = ({ isOpen, onClose, product }) => {
         const locId = product.locationId || 0;
         // Using the updated endpoint that returns { product, statusBreakdown, timeline }
         const response = await fetch(
-          `${domain}/api/products/${product.productId}/history?locationId=${locId}`
+          `${domain}/api/products/${product.productId}/history?locationId=${locId}`,
         );
 
         if (response.ok) {
@@ -59,7 +59,7 @@ const ProductHistoryModal = ({ isOpen, onClose, product }) => {
     const getSum = (keywords) =>
       breakdown
         .filter((item) =>
-          keywords.some((k) => item.statusName?.toUpperCase().includes(k))
+          keywords.some((k) => item.statusName?.toUpperCase().includes(k)),
         )
         .reduce((sum, item) => sum + item.count, 0);
 
@@ -83,7 +83,7 @@ const ProductHistoryModal = ({ isOpen, onClose, product }) => {
         item.transactionNo?.toLowerCase().includes(lower) ||
         item.referenceNo?.toLowerCase().includes(lower) ||
         item.partyName?.toLowerCase().includes(lower) ||
-        item.statusContext?.toLowerCase().includes(lower)
+        item.statusContext?.toLowerCase().includes(lower),
     );
   }, [historyData.timeline, searchQuery]);
 
@@ -92,7 +92,7 @@ const ProductHistoryModal = ({ isOpen, onClose, product }) => {
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
   const currentItems = filteredTimeline.slice(
     indexOfFirstItem,
-    indexOfLastItem
+    indexOfLastItem,
   );
 
   useEffect(() => setCurrentPage(1), [searchQuery]);
